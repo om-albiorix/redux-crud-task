@@ -7,16 +7,17 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
 
 function UserList() {
-  function createData(name: string, calories: number) {
-    return { name, calories };
+  const fullname = useSelector((state: any) => state.fullname);
+  const monumber = useSelector((state: any) => state.monumber);
+
+  function createData(fullName: string, monumber: number) {
+    return { fullname, monumber };
   }
 
-  const rows = [
-    createData("Frozen yoghurt", 159),
-    createData("Ice cream sandwich", 237),
-  ];
+  const rows = [createData(fullname, monumber)];
 
   return (
     <TableContainer component={Paper} className="userlist-main">
@@ -32,13 +33,13 @@ function UserList() {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.monumber}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.fullname}
               </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
+              <TableCell align="right">{row.monumber}</TableCell>
               <TableCell align="right">
                 <Button variant="outlined" color="error">
                   Delete
