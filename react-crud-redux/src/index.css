@@ -1,0 +1,26 @@
+.main-form {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.form-parent {
+  display: flex;
+  justify-content: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 20px;
+  width: 50%;
+  margin: auto;
+}
+.form-title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  margin-left: 30px;
+  text-decoration: underline;
+}
+.userlist-main {
+  margin-top: 20px;
+  border: 1px solid black;
+}
