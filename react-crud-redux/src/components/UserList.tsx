@@ -1,26 +1,28 @@
 import React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import Button from "@mui/material/Button";
+import {
+  Table,
+  Button,
+  Paper,
+  TableRow,
+  TableHead,
+  TableContainer,
+  TableCell,
+  TableBody,
+} from "@mui/material";
 import { useSelector } from "react-redux";
 
 function UserList() {
-  const fullname = useSelector((state: any) => state.fullname);
-  const monumber = useSelector((state: any) => state.monumber);
+  const fullName = useSelector((state: any) => state.fullname);
+  const mobileNumber = useSelector((state: any) => state.monumber);
 
-  function createData(fullName: string, monumber: number) {
-    return { fullname, monumber };
+  function createData(fullName: string, mobileNumber: number) {
+    return { fullName, mobileNumber };
   }
 
-  const rows = [createData(fullname, monumber)];
+  const rows = [createData(fullName, mobileNumber)];
 
   return (
-    <TableContainer component={Paper} className="userlist-main">
+    <TableContainer component={Paper} className="user-list-main">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
@@ -33,13 +35,13 @@ function UserList() {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.monumber}
+              key={row.mobileNumber}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.fullname}
+                {row.fullName}
               </TableCell>
-              <TableCell align="right">{row.monumber}</TableCell>
+              <TableCell align="right">{row.mobileNumber}</TableCell>
               <TableCell align="right">
                 <Button variant="outlined" color="error">
                   Delete

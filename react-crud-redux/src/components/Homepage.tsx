@@ -4,21 +4,26 @@ import Button from "@mui/material/Button";
 import { useDispatch } from "react-redux";
 
 function Homepage() {
-  const [fullname, setFullName] = useState("");
-  const [monumber, setMonumber] = useState("");
+  // interface createData {
+  //   fullName: String;
+  //   mobileNumber: Number;
+  // }
+
+  const intialValues = { fullName, mobileNumber };
+
+  const [formValues, setformValues] = useState(intialValues);
 
   const dispatch = useDispatch();
 
-  const handleName = (e: ChangeEvent<HTMLInputElement>) =>
-    setFullName(e.target.value);
-
-  const handleNumber = (e: ChangeEvent<HTMLInputElement>) =>
-    setMonumber(e.target.value);
+  const handleChange = (e: any) => {
+    const { name, value } = e.target;
+    setformValues({ ...formValues, [name]: value });
+  };
 
   const handleSubmit = () => {
     dispatch({
       type: "ADD-USER",
-      data: { fullname, monumber },
+      data: { fullName, mobileNumber },
     });
   };
 
@@ -32,8 +37,8 @@ function Homepage() {
               className="textfield"
               label="Name"
               variant="outlined"
-              value={fullname}
-              onChange={handleName}
+              value={fullName}
+              onChange={handleChange}
             />
             <br />
             <TextField
@@ -41,8 +46,8 @@ function Homepage() {
               id="outlined-basic"
               label="MobileNumber"
               variant="outlined"
-              value={monumber}
-              onChange={handleNumber}
+              value={mobileNumber}
+              onChange={handleChange}
             />
             <br />
             <Button
